@@ -1,3 +1,4 @@
 # encoding: utf-8
-Config = {}
-
+CONFIG = {}
+CONFIG['mongodb'] = {}
+CONFIG['mongodb']['uri'] = 'mongodb://localhost'

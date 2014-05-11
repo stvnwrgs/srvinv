@@ -1,3 +1,3 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env rackup
 require './app'
 run Sinatra::Application
