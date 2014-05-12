@@ -1,32 +1,34 @@
 # encoding: utf-8
 require './include/config.rb'
 require 'sinatra'
-# require 'mongo_mapper'
-# require './model/ntt.rb'
+require 'mongo_mapper'
+require './model/env.rb'
+require './model/net.rb'
+require './model/srv.rb'
 
-# configure do
-#  MongoMapper.setup({'production' => {'uri' => CONFIG['mongodb']['uri']}}, 'production')
-# end
+configure do
+  MongoMapper.setup({ 'production' => { 'uri' => CONFIG['mongodb']['uri'] } }, 'production')
+end
 
 get '/' do
   'Welcome to srvinv!'
 end
 
-get '/ntts' do
+get '/envs' do
 end
 
-get '/ntts/*' do
+get '/envs/*' do
   params[:splat]
 end
 
-post '/ntts' do
+post '/envs' do
   status 201
 end
 
-put '/ntts/:name' do
+put '/envs/:name' do
   status 202
 end
 
-delete '/ntts/:name' do
+delete '/envs/:name' do
   status 202
 end
