@@ -19,14 +19,14 @@ get '/' do
 end
 
 get '/' + api_version + '/envs' do
-  @result = Env.sort(:created_at.desc)
-  @result.to_json
+  @envs = Env.sort(:created_at.desc)
+  @envs.to_json
 end
 
 get '/' + api_version + '/envs/:name' do
-  @result = Env.where(:name=>params['name']).first
-  return status 404 if @result.nil?
-  return @result.to_json
+  @envn = Env.where(:name=>params['name']).first
+  return status 404 if @envn.nil?
+  return @envn.to_json
 end
 
 post '/' + api_version + '/envs' do
@@ -41,16 +41,17 @@ post '/' + api_version + '/envs' do
 end
 
 put '/' + api_version + '/envs/:name' do
-  @env = Env.where(:name=>params['name']).first
-  return status 404 if @env.nil?
-  @env.update(JSON.parse(params['env']))
-  @env.save
+  given_env = JSON.parse(params['env'])
+  @envn = Env.where(:name=>params['name']).first
+  return status 404 if @envn.nil?
+  @envn.update_attributes(given_env)
+  @envn.save()
   status 202
 end
 
 delete '/' + api_version + '/envs/:name' do
-  @env = Env.where(:name=>params['name']).first
+  @envn = Env.where(:name=>params['name']).first
   return status 404 if @env.nil?
-  @env.delete
+  @envn.delete
   status 202
 end

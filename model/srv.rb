@@ -7,6 +7,7 @@ class Srv
   key :description,       String
   key :created_at,        Time
 
+  key :macs,              Array
   key :interfaces,        Array
   key :cpu_cores,         Integer, default: 1
   key :ram_size_mb,       Integer, default: 1024
