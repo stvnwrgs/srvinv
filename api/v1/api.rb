@@ -30,10 +30,14 @@ get '/' + api_version + '/envs/:name' do
 end
 
 post '/' + api_version + '/envs' do
-  # we need to validate if it's already there
-  @env = Env.new(JSON.parse(params['env']))
-  @env.save
-  status 201
+  given_env = JSON.parse(params['env'])
+  if Env.where(:name=>given_env['name']).empty?
+    @env = Env.new(given_env)
+    @env.save
+    status 201
+  else
+    status 409
+  end
 end
 
 put '/' + api_version + '/envs/:name' do
