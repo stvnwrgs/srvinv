@@ -15,23 +15,23 @@ get '/' do
   'Welcome to srvinv!'
 end
 
-get '/envs' do
+get '/' + CONFIG['api']['version'] + '/envs' do
   @result = Env.sort(:created_at.desc)
 end
 
-get '/envs/:name' do
+get '/' + CONFIG['api']['version'] + '/envs/:name' do
   @result = Env.where(:name=>params['name']).first
   return status 404 if @result.nil?
 end
 
-post '/envs' do
+post '/' + CONFIG['api']['version'] + '/envs' do
   # we need to validate if it's already there
   @env = Env.new(params['env'])
   @env.save
   status 201
 end
 
-put '/envs/:name' do
+put '/' + CONFIG['api']['version'] + '/envs/:name' do
   @env = Env.where(:name=>params['name']).first
   return status 404 if @env.nil?
   @env.update(params['name'])
@@ -39,7 +39,7 @@ put '/envs/:name' do
   status 202
 end
 
-delete '/envs/:name' do
+delete '/' + CONFIG['api']['version'] + '/envs/:name' do
   @env = Env.where(:name=>params['name']).first
   return status 404 if @env.nil?
   @env.delete
