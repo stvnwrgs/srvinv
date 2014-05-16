@@ -50,7 +50,6 @@ put '/' + api_version + '/envs/:name' do
 end
 
 delete '/' + api_version + '/envs/:name' do
-  print 'narf'
   @envn = Env.where(:name=>params['name']).first
   return status 404 if @envn.nil?
   @envn.delete
