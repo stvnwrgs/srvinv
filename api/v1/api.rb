@@ -30,7 +30,7 @@ get '/' + api_version + '/envs/:name' do
 end
 
 post '/' + api_version + '/envs' do
-  given_env = JSON.parse(params['env'])
+  given_env = JSON.parse(request.env["rack.input"].read)
   if Env.where(:name=>given_env['name']).empty?
     @env = Env.new(given_env)
     @env.save
@@ -41,7 +41,7 @@ post '/' + api_version + '/envs' do
 end
 
 put '/' + api_version + '/envs/:name' do
-  given_env = JSON.parse(params['env'])
+  given_env = JSON.parse(request.env["rack.input"].read)
   @envn = Env.where(:name=>params['name']).first
   return status 404 if @envn.nil?
   @envn.update_attributes(given_env)
@@ -50,8 +50,9 @@ put '/' + api_version + '/envs/:name' do
 end
 
 delete '/' + api_version + '/envs/:name' do
+  print 'narf'
   @envn = Env.where(:name=>params['name']).first
-  return status 404 if @env.nil?
+  return status 404 if @envn.nil?
   @envn.delete
   status 202
 end

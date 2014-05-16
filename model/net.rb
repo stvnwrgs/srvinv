@@ -15,5 +15,5 @@ class Net
   many :srvs
   belongs_to :env
 
-  validates_presence_of :name, :description, :created_at
+  validates_presence_of :name, :created_at
 end

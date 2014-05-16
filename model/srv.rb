@@ -13,6 +13,10 @@ class Srv
   key :ram_size_mb,       Integer, default: 1024
   key :disk_size_gb,      Integer, default: 40
 
+  key :os,                String
+  key :os_version,        String
+  key :os_arch,           String
+
   key :servicenames,      Array
   key :projectid,         Integer, default: 0
 
@@ -23,5 +27,5 @@ class Srv
 
   belongs_to :net
 
-  validates_presence_of :name, :description, :created_at, :macs
+  validates_presence_of :name, :created_at
 end

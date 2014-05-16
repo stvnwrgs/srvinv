@@ -9,5 +9,5 @@ class Env
 
   many :nets
 
-  validates_presence_of :name, :description, :created_at
+  validates_presence_of :name, :created_at
 end
