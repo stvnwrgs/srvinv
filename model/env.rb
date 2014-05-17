@@ -6,8 +6,9 @@ class Env
   key :name,         String
   key :description,  String
   key :created_at,   Time
+  key :updated_at,   Time
 
   many :nets
 
-  validates_presence_of :name, :created_at
+  validates_presence_of :name, :created_at, :updated_at
 end

@@ -6,6 +6,7 @@ class Srv
   key :name,              String
   key :description,       String
   key :created_at,        Time
+  key :updated_at,        Time
 
   key :macs,              Array
   key :interfaces,        Array
@@ -27,5 +28,5 @@ class Srv
 
   belongs_to :net
 
-  validates_presence_of :name, :created_at
+  validates_presence_of :name, :created_at, :updated_at
 end
