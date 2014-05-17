@@ -12,6 +12,9 @@ api_version = 'v1'
 configure do
   MongoMapper.setup({ 'production' => { 'uri' => CONFIG['mongodb']['uri'] } }, 'production')
   MongoMapper.database = 'srvinv'
+  unless CONFIG['mongodb']['user'].nil?
+    MongoMapper.database.authenticate(CONFIG['mongodb']['user'], CONFIG['mongodb']['password'])
+  end
 end
 
 get '/' do

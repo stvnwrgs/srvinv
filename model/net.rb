@@ -5,8 +5,7 @@ class Net
 
   key :name,         String
   key :description,  String
-  key :created_at,   Time
-  key :updated_at,   Time
+  timestamps!
 
   key :provider,     String
   key :netmask,      String
