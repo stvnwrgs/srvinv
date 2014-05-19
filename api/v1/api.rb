@@ -52,6 +52,15 @@ put '/' + api_version + '/envs/:name' do
   status 202
 end
 
+patch '/' + api_version + '/envs/:name/:attribute' do
+  value = JSON.parse(request.env["rack.input"].read)
+  @envn = Env.where(:name=>params['name']).first
+  return status 404 if @envn.nil?
+  @envn[params['attribute']] = value['value']
+  @envn.save()
+  status 202
+end
+
 delete '/' + api_version + '/envs/:name' do
   @envn = Env.where(:name=>params['name']).first
   return status 404 if @envn.nil?
