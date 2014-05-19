@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+gem 'mongo'
+gem 'bson_ext'
+gem 'unicorn'
+gem 'sinatra'
+gem 'mongo_mapper'
+gem 'log4r'
