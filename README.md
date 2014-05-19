@@ -36,7 +36,7 @@ machine and you might also want create a load balanced pool of api machines.
 - Install ruby 1.9.3 (preferable using rbenv)
 - Install mongodb
 - Clone this repo to your machine
-- Configure the daemon through include/config.rb
+- Configure the daemon through include/config.rb (see config.example.rb)
 - Install bundler
 - Run 'bundle install' to install needed ruby gems
 - Run 'unicorn'
@@ -63,9 +63,9 @@ was done by the daemon. E.g. If you are saving your CNAME for a machine inside
 srvinv and update that CNAME a hook can be used to notify your dns servers to update
 the zones.
 
-Hooks are ruby classes implementing the include/hook.rb interface. They have to
+Hooks are ruby classes implementing the include/Hook_Interface.rb. They have to
 be stored inside the hooks directory.
-Please have a look at examples/dummy.rb.
+Please have a look at hooks/localchangelog.rb.
 
 Todo
 ==========
