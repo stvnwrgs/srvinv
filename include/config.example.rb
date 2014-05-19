@@ -8,3 +8,6 @@ CONFIG['mongodb']['password'] = nil
 CONFIG['hooks'] = {}
 CONFIG['hooks']['enabled'] = true
 CONFIG['hooks']['enabled_hooks'] = ['localchangelog']
+
+CONFIG['log'] = {}
+CONFIG['log']['path'] = 'log'
