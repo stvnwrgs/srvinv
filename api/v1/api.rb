@@ -1,11 +1,13 @@
 # encoding: utf-8
-require './include/config.rb'
+include_path = File.join(File.dirname(__FILE__), '../..', 'include')
+model_path = File.join(File.dirname(__FILE__), '../..', 'model')
+require File.join(include_path, 'config.rb')
 require 'sinatra'
 require 'mongo_mapper'
 require 'json'
-require './model/env.rb'
-require './model/net.rb'
-require './model/srv.rb'
+require File.join(model_path, 'env.rb')
+require File.join(model_path, 'net.rb')
+require File.join(model_path, 'srv.rb')
 
 api_version = 'v1'
 
