@@ -66,6 +66,7 @@ the zones.
 Hooks are ruby classes implementing the include/Hook_Interface.rb. They have to
 be stored inside the hooks directory.
 Please have a look at hooks/localchangelog.rb.
+To enable a hook, add it to CONFIG['hooks']['enabled_hooks'].
 
 Todo
 ==========
